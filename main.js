@@ -5,22 +5,23 @@ var html = "";
 for (i = 0; i < customers.length; i++) {
   var customer = customers[i];
 
-  html += newCustomer(customer.picture.medium, customer.name.first, customer.name.last, customer.email, customer.location.street, customer.location.city, customer.location.state, customer.location.postcode, customer.phone);
+  html += newCustomer(customer.picture.large, customer.name.first, customer.name.last, customer.email, customer.location.street, customer.location.city, customer.location.state, customer.location.postcode, customer.phone, customer.id.value);
 }
 
 document.querySelector('.wrapper').innerHTML = html;
 
-function newCustomer(img, first, last, email, street, city, state, postcode, tel) {
+function newCustomer(img, first, last, email, street, city, state, postcode, tel, ssn) {
   let post = `
         <div class="employee">
-          <img href=${img}>
+          <img src=${img}>
           <h3 class="name">${first} ${last}</h3>
           <span class="email">${email}</span>
           <ul class="locinfo">
           <li>${street}</li>
           <li>${city} ${state} ${postcode}</li>
           <li>${tel}</li>
-          </ul
+          </ul>
+          <span id="ssn">${ssn}</span>
         </div>`;
   return post;
 }
